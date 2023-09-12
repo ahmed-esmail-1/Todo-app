@@ -1,5 +1,12 @@
-## npm create vite@latest . -- --template vue
+### Check out the deployed project here
 
-## npm install
+https://ahmed-esmail-1.github.io/Todo-app/
 
-## npm run dev //To run local server
+
+To run it on your machine:
+
+npm create vite@latest . -- --template vue
+
+npm install
+
+npm run dev //To run local server
