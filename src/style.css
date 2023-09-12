@@ -1,89 +1,264 @@
+/* Define custom CSS variables for color and shadow values */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary: #f23535;            /* Primary color */
+  --business: #3A82EE;           /* Business category color */
+  --personal: var(--primary);    /* Personal category color, defaults to primary */
+  --light: #EEE;                 /* Light background color */
+  --grey: #888;                  /* Grey text color */
+  --dark: #313154;               /* Dark text and element color */
+  --danger: #ff5b57;             /* Danger color for delete button */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Shadow effect */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);    /* Glow effect for business category */
+  --personal-glow: 0px 0px 4px rgba(248, 65, 65, 0.75);    /* Glow effect for personal category */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Apply common styles to all elements */
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'montserrat', sans-serif; /* Set the font family for the entire document */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Remove default styles for input and button elements */
+input:not([type="radio"]):not([type="checkbox"]), button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: initial;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Define styles for the body element */
+body {
+  background: var(--light); /* Light background color */
+  color: var(--dark);       /* Dark text color */
 }
 
-.card {
-  padding: 2em;
+/* Apply margin and padding to all sections */
+section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5em;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Style for section headings */
+h3 {
+  color: var(--dark);        /* Dark text color */
+  font-size: 1rem;           /* Font size */
+  font-weight: 400;          /* Font weight */
+  margin-bottom: 0.5rem;    /* Margin at the bottom */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Style for subheadings */
+h4 {
+  color: var(--grey);        /* Grey text color */
+  font-size: 0.875rem;       /* Font size */
+  font-weight: 700;          /* Font weight */
+  margin-bottom: 0.5rem;    /* Margin at the bottom */
+}
+
+/* Style for the greeting section title and input */
+.greeting .title {
+  display: flex;             /* Display as flex container */
+}
+
+/* Style for the greeting section input field */
+.greeting .title input {
+  margin-left: 0.5rem;       /* Margin on the left */
+  flex: 1 1 0%;              /* Flex properties for responsiveness */
+  min-width: 0;              /* Minimum width */
+}
+
+/* Style for the greeting section title and input text */
+.greeting .title,
+.greeting .title input {
+  color: var(--dark);        /* Dark text color */
+  font-size: 1.5rem;         /* Font size */
+  font-weight: 700;          /* Font weight */
+}
+
+/* Style for text input fields within the "create-todo" section */
+.create-todo input[type="text"] {
+  display: block;            /* Display as block element */
+  width: 100%;               /* Full width */
+  font-size: 1.125rem;       /* Font size */
+  padding: 1rem 1.5rem;      /* Padding */
+  color: var(--dark);        /* Dark text color */
+  background-color: #FFF;    /* White background color */
+  border-radius: 0.5rem;     /* Border radius */
+  box-shadow: var(--shadow); /* Shadow effect */
+  margin-bottom: 1.5rem;    /* Margin at the bottom */
+}
+
+/* Style for the radio button options in the "create-todo" section */
+.create-todo .options {
+  display: grid;             /* Display as grid */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns in the grid */
+  grid-gap: 1rem;            /* Gap between grid items */
+  margin-bottom: 1.5rem;    /* Margin at the bottom */
+}
+
+/* Style for each option label in the "create-todo" section */
+.create-todo .options label {
+  display: flex;             /* Display as flex container */
+  flex-direction: column;    /* Column layout */
+  align-items: center;       /* Center items horizontally */
+  justify-content: center;   /* Center items vertically */
+  padding: 1.5rem;           /* Padding */
+  background-color: #FFF;    /* White background color */
+  border-radius: 0.5rem;     /* Border radius */
+  box-shadow: var(--shadow); /* Shadow effect */
+  cursor: pointer;           /* Change cursor on hover */
+}
+
+/* Hide default radio and checkbox inputs */
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Style for the category bubbles */
+.bubble {
+  display: flex;             /* Display as flex container */
+  align-items: center;       /* Center items horizontally */
+  justify-content: center;   /* Center items vertically */
+  width: 20px;               /* Width */
+  height: 20px;              /* Height */
+  border-radius: 50%;        /* Circle shape */
+  border: 2px solid var(--business); /* Border with business category color */
+  box-shadow: var(--business-glow);   /* Glow effect for business category */
+}
+
+/* Style for the personal category bubble */
+.bubble.personal {
+  border-color: var(--personal); /* Border color for personal category */
+  box-shadow: var(--personal-glow); /* Glow effect for personal category */
+}
+
+/* Pseudo-element for the bubble */
+.bubble::after {
+  content: "";
+  display: block;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  background-color: var(--business);
+  box-shadow: var(--business-glow);
+  border-radius: 50%;
+  transition: 0.2s ease-in-out; /* Smooth transition */
+}
+
+/* Pseudo-element for the personal category bubble */
+.bubble.personal::after {
+  background-color: var(--personal);
+  box-shadow: var(--personal-glow);
+}
+
+/* Show pseudo-element when input is checked */
+input:checked ~ .bubble::after {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+/* Style for the text within category bubbles */
+.create-todo .options label div {
+  color: var(--dark);        /* Dark text color */
+  font-size: 1.125rem;       /* Font size */
+  margin-top: 1rem;          /* Margin at the top */
+}
+
+/* Style for the "Add todo" button in the "create-todo" section */
+.create-todo input[type="submit"] {
+  display: block;            /* Display as block element */
+  width: 100%;               /* Full width */
+  font-size: 1.125rem;       /* Font size */
+  padding: 1rem 1.5rem;      /* Padding */
+  color: #FFF;               /* White text color */
+  background-color: rgba(23, 132, 11, 0.75); /* Primary color background */
+  border-radius: 0.5rem;     /* Border radius */
+  box-shadow: var(--personal-glow); /* Glow effect */
+  cursor: pointer;           /* Change cursor on hover */
+  transition: 0.2s ease-in-out;    /* Smooth transition */
+}
+
+/* Hover effect for the "Add todo" button */
+.create-todo input[type="submit"]:hover {
+  opacity: 0.75;             /* Reduced opacity on hover */
+}
+
+/* Style for the todo list container */
+.todo-list .list {
+  margin: 1rem 0;            /* Margin top and bottom */
+}
+
+/* Style for individual todo items */
+.todo-list .todo-item {
+  display: flex;             /* Display as flex container */
+  align-items: center;       /* Center items vertically */
+  background-color: #FFF;    /* White background color */
+  padding: 1rem;             /* Padding */
+  border-radius: 0.5rem;     /* Border radius */
+  box-shadow: var(--shadow); /* Shadow effect */
+  margin-bottom: 1rem;      /* Margin at the bottom */
+}
+
+/* Style for the labels within todo items (e.g., checkboxes) */
+.todo-item label {
+  display: block;            /* Display as block element */
+  margin-right: 1rem;        /* Margin on the right */
+  cursor: pointer;           /* Change cursor on hover */
+}
+
+/* Style for the content of each todo item */
+.todo-item .todo-content {
+  flex: 1 1 0%;              /* Flex properties for responsiveness */
+}
+
+/* Style for the input within the todo item content */
+.todo-item .todo-content input {
+  color: var(--dark);        /* Dark text color */
+  font-size: 1.125rem;       /* Font size */
+}
+
+/* Style for the actions section of each todo item */
+.todo-item .actions {
+  display: flex;             /* Display as flex container */
+  align-items: center;       /* Center items vertically */
+}
+
+/* Style for todo item action buttons (e.g., edit and delete) */
+.todo-item .actions button {
+  display: block;            /* Display as block element */
+  padding: 0.5rem;           /* Padding */
+  border-radius: 0.25rem;    /* Border radius */
+  color: #FFF;               /* White text color */
+  cursor: pointer;           /* Change cursor on hover */
+  transition: 0.2s ease-in-out; /* Smooth transition */
+}
+
+/* Hover effect for todo item action buttons */
+.todo-item .actions button:hover {
+  opacity: 0.75;             /* Reduced opacity on hover */
+}
+
+/* Style for the "edit" button within todo items */
+.todo-item .actions .edit {
+  margin-right: 0.5rem;      /* Margin on the right */
+  background-color: var(--primary); /* Primary color background */
+}
+
+/* Style for the "delete" button within todo items */
+.todo-item .actions .delete {
+  background-color: var(--danger);  /* Danger color background */
+}
+
+/* Style for completed todo items with strikethrough */
+.todo-item.done .todo-content input {
+  text-decoration: line-through; /* Strikethrough text */
+  color: var(--grey);        /* Grey text color */
 }
